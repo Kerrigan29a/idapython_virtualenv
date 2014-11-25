@@ -9,7 +9,7 @@ Open IDA and paste the folloging code:
 import urllib2,os,hashlib
 urllib2.install_opener(urllib2.build_opener(urllib2.ProxyHandler()))
 h = "7f77aedebcf28f7010d1c6629b607826d9ff0f35b8db66c91f042ab2c59adfcb"
-ves = urllib2.urlopen('https://fake_url').read()
+ves = urllib2.urlopen('https://raw.githubusercontent.com/Kerrigan29a/idapython_virtualenv/master/ida_virtualenv.py').read()
 dh = hashlib.sha256(ves).hexdigest()
 idadir = get_user_idadir()
 code = "from ida_virtualenv import detectVirtualenv; detectVirtualenv()"
