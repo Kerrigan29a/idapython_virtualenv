@@ -31,6 +31,6 @@ def activateVirtualenv(virtualenv=None, interactive=True):
 
     virtualenv_script = os.path.join(virtualenv, "Scripts", "activate_this.py")
     if not os.path.isfile(virtualenv_script):
-        raise ValueError('nable to find "activate_this.py" in virtualenv: ' + virtualenv)
+        raise ValueError('Enable to find "activate_this.py" in virtualenv: ' + virtualenv)
 
     execfile(virtualenv_script, dict(__file__=virtualenv_script))
