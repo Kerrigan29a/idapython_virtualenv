@@ -28,4 +28,6 @@ then restart.
 - [Conda](http://conda.io/)
 
 ##How it works
-This script try to detect automatically if the environment variables are defined. In this case it uses them to activate the Python virtual environment. If the variable is not defined you can call `activate_X_env` functions manually.
+This script try to detect automatically if the environment variables are defined. In this case it uses them to activate the Python virtual environment. If the variable is not defined you can call this functions manually:
+- [activate_virtual_env](envs.py#L42)
+- [activate_conda_env](envs.py#L64)
