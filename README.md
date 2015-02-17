@@ -8,7 +8,7 @@ Open IDA and paste the folloging code:
 ```python
 import urllib2,os,hashlib
 urllib2.install_opener(urllib2.build_opener(urllib2.ProxyHandler()))
-h = "7f77aedebcf28f7010d1c6629b607826d9ff0f35b8db66c91f042ab2c59adfcb"
+h = "ca57d849754cdea2d15c709cb1c5345e71352b7908fe90ed2b97a8acb53faed1"
 ves = urllib2.urlopen('https://raw.githubusercontent.com/Kerrigan29a/idapython_virtualenv/master/envs.py').read()
 dh = hashlib.sha256(ves).hexdigest()
 idadir = get_user_idadir()
