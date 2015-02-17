@@ -2,6 +2,6 @@
 
 
 
-from ida_virtualenv import detectVirtualenv
+from envs import detect_env
 
-detectVirtualenv()
+detect_env()
