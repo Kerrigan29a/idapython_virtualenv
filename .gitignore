@@ -1,0 +1,4 @@
+# Python related files
+*.py[cod]
+*.egg-info
+*.pstats
