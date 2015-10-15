@@ -1,18 +1,16 @@
 # -*- coding: utf-8 -*-
 
 
-
 from __future__ import absolute_import
+from __future__ import print_function
 
 import os
 import sys
 import idaapi
 
 
-
 def root_path():
     return os.path.abspath(os.sep)
-
 
 
 def detect_env():
@@ -36,7 +34,6 @@ def detect_env():
     except ValueError as e:
         print(e.message)
     return False
-
 
 
 def activate_virtualenv_env(virtualenv=None, interactive=True):
@@ -64,7 +61,6 @@ def activate_virtualenv_env(virtualenv=None, interactive=True):
 # Based from the virtualenv script activate_this.py
 def activate_conda_env(envs=None, env=None, interactive=True):
     folder = "Scripts" if os.name == "nt" else "bin"
-
 
     # Get env
     if env == None:
