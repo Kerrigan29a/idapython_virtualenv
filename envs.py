@@ -40,6 +40,7 @@ def detect_env():
 
 
 def activate_virtualenv_env(virtualenv=None, interactive=True):
+    folder = "Scripts" if os.name == "nt" else "bin"
     if virtualenv == None:
         virtualenv = os.environ.get("VIRTUAL_ENV")
         if not virtualenv and interactive:
@@ -51,9 +52,9 @@ def activate_virtualenv_env(virtualenv=None, interactive=True):
     if not os.path.isdir(virtualenv):
         raise ValueError("This path is not a dir: " + virtualenv)
 
-    virtualenv_script = os.path.join(virtualenv, "Scripts", "activate_this.py")
+    virtualenv_script = os.path.join(virtualenv, folder, "activate_this.py")
     if not os.path.isfile(virtualenv_script):
-        raise ValueError('Enable to find "Scripts' + os.sep + 'activate_this.py" in virtualenv: ' + virtualenv)
+        raise ValueError('Enable to find "' + folder + os.sep + 'activate_this.py" in virtualenv: ' + virtualenv)
 
     execfile(virtualenv_script, dict(__file__=virtualenv_script))
 
@@ -62,6 +63,8 @@ def activate_virtualenv_env(virtualenv=None, interactive=True):
 
 # Based from the virtualenv script activate_this.py
 def activate_conda_env(envs=None, env=None, interactive=True):
+    folder = "Scripts" if os.name == "nt" else "bin"
+
 
     # Get env
     if env == None:
@@ -90,7 +93,7 @@ def activate_conda_env(envs=None, env=None, interactive=True):
 
     # Patch PATH
     old_os_path = os.environ['PATH']
-    os.environ['PATH'] = env + os.pathsep + os.path.join(env, "Scripts") + os.pathsep + old_os_path
+    os.environ['PATH'] = env + os.pathsep + os.path.join(env, folder) + os.pathsep + old_os_path
 
     # Compose new system path
     if sys.platform == 'win32':
