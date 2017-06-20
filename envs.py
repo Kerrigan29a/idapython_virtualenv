@@ -16,19 +16,14 @@ def root_path():
 def detect_env():
     try:
         print("Detecting Virtualenv envs")
-        path = activate_virtualenv_env(
-            os.environ.get("VIRTUAL_ENV"),
-            False)
+        path = activate_virtualenv_env(None, False)
         print("Virtualenv env activated: " + str(path))
         return True
     except ValueError as e:
         print(e.message)
     try:
         print("Detecting Conda envs")
-        path = activate_conda_env(
-            os.environ.get("ANACONDA_ENVS"),
-            os.environ.get("CONDA_DEFAULT_ENV"),
-            False)
+        path = activate_conda_env(None, None, False)
         print("Conda env activated: " + str(path))
         return True
     except ValueError as e:
@@ -58,34 +53,24 @@ def activate_virtualenv_env(virtualenv=None, interactive=True):
     return virtualenv
 
 
-# Based from the virtualenv script activate_this.py
-def activate_conda_env(envs=None, env=None, interactive=True):
+def activate_conda_env(base=None, env=None, interactive=True):
     folder = "Scripts" if os.name == "nt" else "bin"
 
     # Get env
     if env == None:
-        if envs == None:
-            envs = os.environ.get("ANACONDA_ENVS")
-            if not envs and interactive:
-                envs = idaapi.askstr(0, root_path(), "Anaconda envs dir")
-
-        # Check envs
-        if not envs:
-            raise ValueError("No Conda base envs dir")
-        if not os.path.isdir(envs):
-            raise ValueError("This path is not a dir: " + envs)
-
-        env = os.environ.get("CONDA_DEFAULT_ENV")
+        env = os.environ.get("CONDA_PREFIX")
         if not env and interactive:
-            env = idaapi.askstr(0, envs, "Select a env")
+            env = idaapi.askstr(0, root_path(), "Select a env")
 
     # Check env
     if not env:
         raise ValueError("No Conda env")
-    if not os.path.isabs(env):
-        env = os.path.join(envs, env)
     if not os.path.isdir(env):
         raise ValueError("This path is not a dir: " + env)
+
+    ###
+    # Based on the virtualenv script 'activate_this.py'
+    ###
 
     # Patch PATH
     old_os_path = os.environ['PATH']

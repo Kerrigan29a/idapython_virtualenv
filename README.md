@@ -8,7 +8,7 @@ Open IDA and paste the folloging code:
 ```python
 import urllib2,os,hashlib
 urllib2.install_opener(urllib2.build_opener(urllib2.ProxyHandler()))
-original_hash = "0ce3569b15bfd01954247cf86503c32bcf30e83e0456a45eda79da5762f5c2af"
+original_hash = "d7c05737619aa0ef86e962832d7812338b39465b088fd55f2c8d996e8e6d72b8"
 env_code = urllib2.urlopen('https://raw.githubusercontent.com/Kerrigan29a/idapython_virtualenv/master/envs.py').read()
 calculated_hash = hashlib.sha256(env_code).hexdigest()
 idadir = get_user_idadir()
@@ -29,5 +29,5 @@ then restart.
 
 ## How it works
 This script try to detect automatically if the environment variables are defined. In this case it uses them to activate the Python virtual environment. If the variable is not defined you can call this functions manually:
-- [activate_virtual_env](envs.py#L42)
-- [activate_conda_env](envs.py#L64)
+- [activate_virtual_env](envs.py#L34)
+- [activate_conda_env](envs.py#L56)
