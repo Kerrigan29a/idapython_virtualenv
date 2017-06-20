@@ -1,7 +1,7 @@
-#Multiples virtual envs support for IDAPython
+# Multiples virtual envs support for IDAPython
 by Javier Escalada Gómez
 
-##How to install in IDA
+## How to install in IDA
 
 Open IDA and paste the folloging code:
 
@@ -23,11 +23,11 @@ else:
 
 then restart.
 
-##Supported envs
+## Supported envs
 - [Virtualenv](http://virtualenv.pypa.io/en/latest/)
 - [Conda](http://conda.io/)
 
-##How it works
+## How it works
 This script try to detect automatically if the environment variables are defined. In this case it uses them to activate the Python virtual environment. If the variable is not defined you can call this functions manually:
 - [activate_virtual_env](envs.py#L42)
 - [activate_conda_env](envs.py#L64)
